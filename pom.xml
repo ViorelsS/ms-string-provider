@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>it.deda.academy</groupId>
-	<artifactId>ms-string-provider</artifactId>
+	<artifactId>microservizi</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ms-string-provider</name>
 	<description>Prima applicazione a microservizi</description>
@@ -31,10 +31,12 @@
 		<spring-cloud.version>2023.0.3</spring-cloud.version>
 	</properties>
 	<dependencies>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-config</artifactId>
@@ -45,6 +47,19 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
+
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>

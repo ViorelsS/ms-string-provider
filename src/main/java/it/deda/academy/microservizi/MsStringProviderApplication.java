@@ -1,4 +1,4 @@
-package it.deda.academy.ms_string_provider;
+package it.deda.academy.microservizi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

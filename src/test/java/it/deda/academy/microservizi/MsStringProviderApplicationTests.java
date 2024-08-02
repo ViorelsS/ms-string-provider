@@ -1,4 +1,4 @@
-package it.deda.academy.ms_string_provider;
+package it.deda.academy.microservizi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
