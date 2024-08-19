@@ -1,5 +1,6 @@
 package it.deda.academy.microservizi.controller;
 
+import it.deda.academy.microservizi.clients.StringTransformerClient;
 import it.deda.academy.microservizi.config.CustomConfigurationProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -9,6 +10,9 @@ import org.springframework.context.event.EventListener;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RefreshScope
 public class StringController {
@@ -16,15 +20,25 @@ public class StringController {
     @Autowired
     CustomConfigurationProperties customConfigurationProperties;
 
+    @Autowired
+    StringTransformerClient stringTransformerClient;
 
-   public void onEvent(){
-       System.out.println();
-   }
+    public void onEvent() {
+        System.out.println();
+    }
 
     @RequestMapping("/string")
     @EventListener({ApplicationReadyEvent.class, RefreshScopeRefreshedEvent.class})
-    public String getString() {
-        return customConfigurationProperties.getProperty1() + " " + customConfigurationProperties.getProperty2();
+    public Map<String, String> getString() {
+        Map<String, String> response = new HashMap<>();
+        String propertiesString = customConfigurationProperties.getProperty1() + " " + customConfigurationProperties.getProperty2();
+        response.put("properties", propertiesString);
+        response.put("serverPort", customConfigurationProperties.getServerPort());
+
+        String transformedString = stringTransformerClient.transformString(propertiesString);
+        response.put("transformedProperties", transformedString);
+
+        return response;
     }
 
 }
